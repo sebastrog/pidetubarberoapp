@@ -15,7 +15,6 @@ export const favoritesSlice = createSlice({
     },
     removeFavorite: (state, action) => {
       const filteredState = current(state).filter((person: Person) => person.id !== action.payload.id);
-      console.log(filteredState);
       localStorage.setItem(LocalStorageKeys.FAVORITES, JSON.stringify(filteredState));
       return filteredState;
     }
