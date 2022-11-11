@@ -1,4 +1,5 @@
-import { AppBar, Button, Toolbar, Typography } from '@mui/material';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import { CustomDialog } from '../CustomDialog';
 import { dialogOpenSubject$ } from '../CustomDialog/CustomDialog';
@@ -20,9 +21,9 @@ const Navbar: React.FC<NavbarInterface> = () => {
           I'm an example of good practices
         </Typography>
 
-        <Button color="secondary" onClick={handleClick}>
-          Holi
-        </Button>
+        <IconButton size="large" edge="end" color='inherit' aria-label='favorites' onClick={handleClick}>
+          <StarBorderIcon />
+        </IconButton>
       </Toolbar>
     </AppBar>
   </>

@@ -1,9 +1,9 @@
-import { Person } from '@/models';
+import { LocalStorageKeys, Person } from '@/models';
 import { addFavorite } from '@/redux/states';
 import { AppStore } from '@/redux/store';
 import { Checkbox } from '@mui/material';
 import { DataGrid, GridRenderCellParams } from '@mui/x-data-grid';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 export interface PeopleTableInterface { }
@@ -11,11 +11,15 @@ export interface PeopleTableInterface { }
 const PeopleTable: React.FC<PeopleTableInterface> = () => {
   const [selectedPeople, setSelectedPeople] = useState<Person[]>([]);
   const dispatch = useDispatch();
-  const statePeople = useSelector((store: AppStore) => store.people);
+  const statePeople = useSelector((store: AppStore) => store[LocalStorageKeys.PEOPLE]);
+  const favoritePeople = useSelector((store: AppStore) => store[LocalStorageKeys.FAVORITES]);
 
+  useEffect(() => {
+    setSelectedPeople(favoritePeople);
+  }, [favoritePeople]);
 
-  const findPerson = (person: Person) => !!selectedPeople.find((p) => p.id === person.id);
-  const filterPerson = (person: Person) => selectedPeople.filter((p) => p.id !== person.id);
+  const findPerson = (person: Person) => !!favoritePeople.find((p) => p.id === person.id);
+  const filterPerson = (person: Person) => favoritePeople.filter((p) => p.id !== person.id);
 
   /**
    * If the person is already in the list of selected people, remove them from the list, otherwise add
