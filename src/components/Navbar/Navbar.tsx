@@ -1,13 +1,19 @@
+import { LocalStorageKeys } from '@/models';
+import { AppStore } from '@/redux/store';
+import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { CustomDialog } from '../CustomDialog';
 import { dialogOpenSubject$ } from '../CustomDialog/CustomDialog';
 import { FavoriteTable } from './FavoriteTable';
-
 export interface NavbarInterface { }
 
 const Navbar: React.FC<NavbarInterface> = () => {
+
+  const storeFavorites = useSelector((store: AppStore) => store[LocalStorageKeys.FAVORITES]);
+
   const handleClick = () => {
     dialogOpenSubject$.setSubject = true;
   };
@@ -22,7 +28,7 @@ const Navbar: React.FC<NavbarInterface> = () => {
         </Typography>
 
         <IconButton size="large" edge="end" color='inherit' aria-label='favorites' onClick={handleClick}>
-          <StarBorderIcon />
+          {storeFavorites.length ? <StarIcon /> : <StarBorderIcon />}
         </IconButton>
       </Toolbar>
     </AppBar>
