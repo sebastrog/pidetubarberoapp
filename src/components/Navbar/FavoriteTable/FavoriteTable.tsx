@@ -4,14 +4,13 @@ import { AppStore } from '@/redux/store';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
 import { DataGrid, GridRenderCellParams } from '@mui/x-data-grid';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 
 export interface FavoriteTableInterface { }
 
 const FavoriteTable: React.FC<FavoriteTableInterface> = () => {
-  const [selectedPeople, setSelectedPeople] = useState<Person[]>([]);
   const dispatch = useDispatch();
   const stateFavorites = useSelector((store: AppStore) => store.favorites);
 
