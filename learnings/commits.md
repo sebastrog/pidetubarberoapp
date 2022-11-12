@@ -1,6 +1,6 @@
-# Contributing to PideToBarberoApp
+# Contributing to nZero
 
-We can't wait for you to contribute to PideToBarberoApp and help make it the best app it can be! As a contributor, here are the guidelines we would like you to follow:
+We can't wait for you to contribute to nZero and help make it the best app it can be! As a contributor, here are the guidelines we would like you to follow:
 
 - [Commit Message Guidelines](#commit)
 - [Pull Request Guidelines](#pr)
